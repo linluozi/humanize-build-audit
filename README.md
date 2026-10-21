@@ -27,6 +27,8 @@ Everything is reproducible from this repository: `python verify.py` runs 19
 checks from a fresh extraction, and `python check_readme_numbers.py` traces all
 28 numbers in this file back to `evidence/*.json`.
 
+**Read it as a page:** <https://linluozi.github.io/humanize-build-audit/>
+
 ---
 
 ## 0. At a glance
