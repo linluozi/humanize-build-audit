@@ -1,0 +1,127 @@
+diff --git a/.github/workflows/test.yml b/.github/workflows/test.yml
+index 515f29f..fd02572 100644
+--- a/.github/workflows/test.yml
++++ b/.github/workflows/test.yml
+@@ -52,13 +52,35 @@ jobs:
+         run: |
+           brew install gettext
+ 
++      # Without msgfmt the compile step is a no-op, and the ~110 locale tests
++      # then *skip* instead of failing, so Windows used to report a green run
++      # that had silently skipped all of them.
++      - name: Install Windows dependencies
++        if: startsWith(matrix.os, 'windows')
++        run: |
++          choco install gettext --no-progress -y
++          refreshenv
++          msgfmt --version
++
+       - name: Install uv
+         uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+ 
++      # `shell: bash` is required on Windows: the default pwsh shell does not
++      # execute a .sh file, it silently succeeds without running anything.
+       - name: Generate translation binaries
++        shell: bash
+         run: |
+           scripts/generate-translation-binaries.sh
+ 
++      # A build with no compiled catalogs passes 744 tests and skips 112.
++      # Assert the catalogs exist so that regression can never look green again.
++      - name: Verify translation binaries
++        shell: bash
++        run: |
++          count=$(ls src/humanize/locale/*/LC_MESSAGES/*.mo | wc -l)
++          echo "compiled catalogs: $count"
++          test "$count" -ge 36
++
+       - name: Tox tests
+         run: |
+           uvx --python ${{ matrix.python-version }} --with tox-uv tox -e py
+diff --git a/.gitignore b/.gitignore
+index e6f0849..a2d70a0 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -11,6 +11,7 @@ dist/
+ .coverage
+ .coverage.*
+ coverage.xml
++htmlcov/
+ .hypothesis/
+ 
+ # Translations
+diff --git a/scripts/generate-translation-binaries.sh b/scripts/generate-translation-binaries.sh
+index 5e54776..d961791 100644
+--- a/scripts/generate-translation-binaries.sh
++++ b/scripts/generate-translation-binaries.sh
+@@ -1,8 +1,44 @@
+ set -e
+ 
++# Compile every .po catalog into a binary .mo catalog.
++#
++# The conversions are independent of each other, and most of the old
++# sequential loop's wall clock went to process start-up rather than to the
++# conversion itself, so they now run in bounded parallel batches.  The .mo
++# files produced are byte-identical to the sequential loop's output, the
++# locale names are still echoed in sorted order so CI logs stay diffable, and
++# a broken catalog still stops the run instead of being skipped.
++#
++# JOBS caps the batch width: a 2-core CI runner should not be asked to start
++# 36 compilers at once, and past 8 the wall clock stops improving.
++
++JOBS="${JOBS:-8}"
++batch=""
++running=0
++failed=0
++
++reap() {
++    for pid in $batch; do
++        wait "$pid" || failed=1
++    done
++    batch=""
++    running=0
++    if [ "$failed" -ne 0 ]; then
++        echo "translation compilation failed" >&2
++        exit 1
++    fi
++}
++
+ for d in src/humanize/locale/*/; do
+     locale="$(basename $d)"
+     echo "$locale"
+     # compile to binary .mo
+-    msgfmt --check -o src/humanize/locale/$locale/LC_MESSAGES/humanize{.mo,.po}
++    msgfmt --check -o "src/humanize/locale/$locale/LC_MESSAGES/humanize.mo" \
++        "src/humanize/locale/$locale/LC_MESSAGES/humanize.po" &
++    batch="$batch $!"
++    running=$((running + 1))
++    if [ "$running" -ge "$JOBS" ]; then
++        reap
++    fi
+ done
++reap
+diff --git a/tox.ini b/tox.ini
+index 9197a76..380e22e 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -15,10 +15,19 @@ extras =
+ pass_env =
+     FORCE_COLOR
+ commands =
++    # --benchmark-disable still runs the 15 benchmark functions, it only skips
++    # the timing loop, so pass counts and coverage are unchanged.  The table
++    # pytest-benchmark prints here was never consumed by anything: benchmark.yml
++    # is what tracks those numbers, through CodSpeed.  Timing them again in
++    # every matrix cell cost ~3.7s out of a ~13s test step.  Pass
++    # --benchmark-enable to time them locally.
++    #
++    # The html report is dropped as well: nothing reads htmlcov/, and it costs
++    # more to write than the xml report that codecov actually uploads.
+     {envpython} -m pytest \
++      --benchmark-disable \
+       --cov humanize \
+       --cov tests \
+-      --cov-report html \
+       --cov-report term \
+       --cov-report xml \
+       {posargs}

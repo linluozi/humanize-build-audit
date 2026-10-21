@@ -1,0 +1,101 @@
+{
+  "locales": 36,
+  "all_widths_byte_identical": true,
+  "variants": {
+    "jobs=1": {
+      "median_ms": 3126.4,
+      "min_ms": 2928.2,
+      "max_ms": 3865.5,
+      "speedup_vs_upstream": 0.92,
+      "rounds_ms": [
+        3172.4,
+        2928.3,
+        3126.4,
+        3248.3,
+        3865.5,
+        3019.4,
+        2928.2
+      ]
+    },
+    "jobs=2": {
+      "median_ms": 2528.5,
+      "min_ms": 2366.3,
+      "max_ms": 2653.6,
+      "speedup_vs_upstream": 1.14,
+      "rounds_ms": [
+        2653.6,
+        2621.7,
+        2366.3,
+        2528.5,
+        2370.0,
+        2544.6,
+        2386.8
+      ]
+    },
+    "jobs=4": {
+      "median_ms": 2198.2,
+      "min_ms": 2019.5,
+      "max_ms": 3033.2,
+      "speedup_vs_upstream": 1.31,
+      "rounds_ms": [
+        2144.5,
+        3033.2,
+        2278.7,
+        2237.2,
+        2198.2,
+        2197.6,
+        2019.5
+      ]
+    },
+    "jobs=8": {
+      "median_ms": 2009.4,
+      "min_ms": 1907.9,
+      "max_ms": 2324.9,
+      "speedup_vs_upstream": 1.44,
+      "rounds_ms": [
+        2009.4,
+        2324.9,
+        1907.9,
+        2153.7,
+        1987.9,
+        2235.2,
+        2002.8
+      ]
+    },
+    "jobs=16": {
+      "median_ms": 2068.3,
+      "min_ms": 1910.7,
+      "max_ms": 2192.0,
+      "speedup_vs_upstream": 1.4,
+      "rounds_ms": [
+        1998.7,
+        2118.3,
+        2177.4,
+        2192.0,
+        1910.7,
+        2068.3,
+        2029.4
+      ]
+    },
+    "upstream_sequential": {
+      "median_ms": 2888.8,
+      "min_ms": 2658.7,
+      "max_ms": 3221.9,
+      "speedup_vs_upstream": 1.0,
+      "rounds_ms": [
+        2690.7,
+        2888.8,
+        3129.1,
+        2693.1,
+        3081.6,
+        3221.9,
+        2658.7
+      ]
+    }
+  },
+  "_meta": {
+    "rounds": 7,
+    "python": "3.13.14",
+    "platform": "win32"
+  }
+}

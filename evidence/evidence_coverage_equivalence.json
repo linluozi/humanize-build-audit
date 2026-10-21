@@ -1,0 +1,15 @@
+{
+  "raw_bytes_equal": false,
+  "normalized_bytes_equal": true,
+  "totals_equal": true,
+  "totals": {
+    "lines_valid": 1006,
+    "lines_covered": 959,
+    "line_rate": "0.9533",
+    "branches_valid": 0
+  },
+  "files_compared": 14,
+  "per_line_hit_differences": [],
+  "per_line_difference_count": 0,
+  "conclusion": "identical apart from the timestamp attribute"
+}

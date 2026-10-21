@@ -1,0 +1,79 @@
+{
+  "benchmark_timed": {
+    "pytest_s_median": 5.83,
+    "pytest_s_min": 4.5,
+    "pytest_s_max": 6.66,
+    "rounds": [
+      6.66,
+      6.16,
+      5.35,
+      5.02,
+      6.25,
+      4.5,
+      6.42,
+      5.13,
+      5.83
+    ],
+    "summaries": [
+      "854 passed, 2 skipped in 4.50s",
+      "854 passed, 2 skipped in 5.02s",
+      "854 passed, 2 skipped in 5.13s",
+      "854 passed, 2 skipped in 5.35s",
+      "854 passed, 2 skipped in 5.83s",
+      "854 passed, 2 skipped in 6.16s",
+      "854 passed, 2 skipped in 6.25s",
+      "854 passed, 2 skipped in 6.42s",
+      "854 passed, 2 skipped in 6.66s"
+    ]
+  },
+  "benchmark_disabled": {
+    "pytest_s_median": 1.58,
+    "pytest_s_min": 1.49,
+    "pytest_s_max": 1.75,
+    "rounds": [
+      1.62,
+      1.57,
+      1.54,
+      1.6,
+      1.59,
+      1.51,
+      1.49,
+      1.75,
+      1.58
+    ],
+    "summaries": [
+      "854 passed, 2 skipped in 1.49s",
+      "854 passed, 2 skipped in 1.51s",
+      "854 passed, 2 skipped in 1.54s",
+      "854 passed, 2 skipped in 1.57s",
+      "854 passed, 2 skipped in 1.58s",
+      "854 passed, 2 skipped in 1.59s",
+      "854 passed, 2 skipped in 1.60s",
+      "854 passed, 2 skipped in 1.62s",
+      "854 passed, 2 skipped in 1.75s"
+    ]
+  },
+  "_paired_delta_s": {
+    "median": 4.25,
+    "min": 2.99,
+    "max": 5.04,
+    "rounds": [
+      5.04,
+      4.59,
+      3.81,
+      3.42,
+      4.66,
+      2.99,
+      4.93,
+      3.38,
+      4.25
+    ],
+    "note": "paired per round, so a slow round hits both variants"
+  },
+  "_meta": {
+    "rounds": 9,
+    "python": "3.13.14",
+    "interpreter": "E:\\WorkBuddy-Work\\WorkBuddy-0\\_build_audit\\venv_clean\\Scripts\\python.exe",
+    "note": "venv_clean has an editable install of THIS tree; the old .venv pointed at build/verify_patch, so it was testing a different copy"
+  }
+}

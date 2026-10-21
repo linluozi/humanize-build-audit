@@ -1,0 +1,202 @@
+{
+  "A_baseline": {
+    "pytest_s_median": 3.8,
+    "pytest_s_iqr": [
+      3.69,
+      4.24
+    ],
+    "pytest_s_min": 3.48,
+    "pytest_s_max": 4.63,
+    "ratio_median": 1.0,
+    "ratio_range": [
+      1.0,
+      1.0
+    ],
+    "htmlcov_files": 23,
+    "xml_bytes": 40019,
+    "passed_skipped": [
+      854,
+      2
+    ],
+    "rounds_pytest_s": [
+      3.74,
+      4.24,
+      3.8,
+      3.69,
+      3.48,
+      3.95,
+      4.63
+    ]
+  },
+  "A_aa_control": {
+    "pytest_s_median": 3.76,
+    "pytest_s_iqr": [
+      3.69,
+      4.09
+    ],
+    "pytest_s_min": 3.62,
+    "pytest_s_max": 4.43,
+    "ratio_median": 1.03,
+    "ratio_range": [
+      0.926,
+      1.143
+    ],
+    "htmlcov_files": 23,
+    "xml_bytes": 40065,
+    "passed_skipped": [
+      854,
+      2
+    ],
+    "rounds_pytest_s": [
+      3.62,
+      3.71,
+      3.69,
+      3.8,
+      3.76,
+      4.09,
+      4.43
+    ]
+  },
+  "B_no_html": {
+    "pytest_s_median": 3.78,
+    "pytest_s_iqr": [
+      3.61,
+      3.85
+    ],
+    "pytest_s_min": 3.2,
+    "pytest_s_max": 4.07,
+    "ratio_median": 1.033,
+    "ratio_range": [
+      0.918,
+      1.175
+    ],
+    "htmlcov_files": 0,
+    "xml_bytes": 40065,
+    "passed_skipped": [
+      854,
+      2
+    ],
+    "rounds_pytest_s": [
+      3.62,
+      3.61,
+      3.78,
+      3.2,
+      3.79,
+      3.85,
+      4.07
+    ]
+  },
+  "C_no_bench_timing": {
+    "pytest_s_median": 2.28,
+    "pytest_s_iqr": [
+      2.21,
+      2.45
+    ],
+    "pytest_s_min": 2.2,
+    "pytest_s_max": 2.81,
+    "ratio_median": 1.648,
+    "ratio_range": [
+      1.552,
+      1.919
+    ],
+    "htmlcov_files": 23,
+    "xml_bytes": 40065,
+    "passed_skipped": [
+      854,
+      2
+    ],
+    "rounds_pytest_s": [
+      2.41,
+      2.21,
+      2.28,
+      2.22,
+      2.2,
+      2.45,
+      2.81
+    ]
+  },
+  "D_patch": {
+    "pytest_s_median": 1.93,
+    "pytest_s_iqr": [
+      1.91,
+      2.42
+    ],
+    "pytest_s_min": 1.87,
+    "pytest_s_max": 3.14,
+    "ratio_median": 1.913,
+    "ratio_range": [
+      1.258,
+      2.267
+    ],
+    "htmlcov_files": 0,
+    "xml_bytes": 40065,
+    "passed_skipped": [
+      854,
+      2
+    ],
+    "rounds_pytest_s": [
+      1.91,
+      1.87,
+      1.92,
+      2.0,
+      1.93,
+      3.14,
+      2.42
+    ]
+  },
+  "E_patch_no_testcov": {
+    "pytest_s_median": 1.85,
+    "pytest_s_iqr": [
+      1.72,
+      2.41
+    ],
+    "pytest_s_min": 1.71,
+    "pytest_s_max": 4.04,
+    "ratio_median": 1.995,
+    "ratio_range": [
+      0.978,
+      2.48
+    ],
+    "htmlcov_files": 0,
+    "xml_bytes": 22426,
+    "passed_skipped": [
+      854,
+      2
+    ],
+    "rounds_pytest_s": [
+      1.84,
+      1.71,
+      2.02,
+      1.85,
+      1.72,
+      4.04,
+      2.41
+    ]
+  },
+  "_verdict": {
+    "metric": "pytest self-reported duration",
+    "aa_ratio_range": [
+      0.926,
+      1.143
+    ],
+    "aa_median": 1.03,
+    "rule": "faster only if ratio_median > A/A upper edge",
+    "within_noise": [
+      "B_no_html"
+    ],
+    "beyond_noise": {
+      "C_no_bench_timing": 1.648,
+      "D_patch": 1.913,
+      "E_patch_no_testcov": 1.995
+    }
+  },
+  "_meta": {
+    "rounds": 7,
+    "python": "3.13.14",
+    "platform": "win32",
+    "self_checks": [
+      "36 .mo present before and after every run",
+      "passed/skipped must equal (854, 2)"
+    ]
+  }
+}

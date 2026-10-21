@@ -1,0 +1,48 @@
+{
+  "upstream_cmd": {
+    "wall_median_s": 4.98,
+    "pytest_median_s": 3.78,
+    "rounds": [
+      5.85,
+      4.83,
+      5.04,
+      4.62,
+      4.98
+    ]
+  },
+  "patched_cmd": {
+    "wall_median_s": 3.06,
+    "pytest_median_s": 1.97,
+    "rounds": [
+      2.99,
+      3.03,
+      3.39,
+      3.1,
+      3.06
+    ]
+  },
+  "interpreter_floor": {
+    "wall_median_s": 0.43,
+    "pytest_median_s": null,
+    "rounds": [
+      0.4,
+      0.4,
+      0.54,
+      0.43,
+      0.65
+    ]
+  },
+  "_derived": {
+    "upstream_overhead_s": 1.2,
+    "patched_overhead_s": 1.09,
+    "interpreter_floor_s": 0.43,
+    "wall_reduction_pct": 38.6,
+    "pytest_reduction_pct": 47.9,
+    "note": "overhead = process start + plugin import + coverage report write; interpreter_floor is the irreducible part"
+  },
+  "_meta": {
+    "rounds": 5,
+    "python": "3.13.14",
+    "platform": "win32"
+  }
+}

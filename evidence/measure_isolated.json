@@ -1,0 +1,78 @@
+{
+  "_meta": {
+    "rounds": 9,
+    "python": "3.13.14",
+    "platform": "win32",
+    "msgfmt": "msgfmt.exe (GNU gettext-tools) 1.0"
+  },
+  "coverage_reports": {
+    "per_report_ms": {
+      "term": {
+        "median": 394.9,
+        "min": 374.8,
+        "max": 550.5
+      },
+      "xml": {
+        "median": 417.6,
+        "min": 392.5,
+        "max": 503.3
+      },
+      "html": {
+        "median": 583.3,
+        "min": 525.6,
+        "max": 658.0
+      }
+    },
+    "html_artifacts": {
+      "files": 23,
+      "bytes": 1325311,
+      "names": [
+        ".gitignore",
+        "class_index.html",
+        "coverage_html_cb_c6c441fc.js",
+        "favicon_32_cb_c827f16f.png",
+        "function_index.html",
+        "index.html",
+        "keybd_closed_cb_900cfef5.png",
+        "status.json",
+        "style_cb_0853b3de.css",
+        "z_1fc1bd49f2ffdc4c___init___py.html",
+        "z_1fc1bd49f2ffdc4c__version_py.html",
+        "z_1fc1bd49f2ffdc4c_filesize_py.html",
+        "z_1fc1bd49f2ffdc4c_i18n_py.html",
+        "z_1fc1bd49f2ffdc4c_lists_py.html",
+        "z_1fc1bd49f2ffdc4c_number_py.html",
+        "z_1fc1bd49f2ffdc4c_time_py.html",
+        "z_a44f0ac069e85531___init___py.html",
+        "z_a44f0ac069e85531_test_benchmarks_py.html",
+        "z_a44f0ac069e85531_test_filesize_py.html",
+        "z_a44f0ac069e85531_test_i18n_py.html",
+        "z_a44f0ac069e85531_test_lists_py.html",
+        "z_a44f0ac069e85531_test_number_py.html",
+        "z_a44f0ac069e85531_test_time_py.html"
+      ]
+    },
+    "xml_bytes": 39985,
+    "html_over_xml_ratio": 1.4
+  },
+  "msgfmt": {
+    "locale_count": 36,
+    "sequential_ms": {
+      "median": 594.5,
+      "min": 518.0,
+      "max": 997.2
+    },
+    "parallel_ms_8workers": {
+      "median": 146.5,
+      "min": 123.3,
+      "max": 250.1
+    },
+    "speedup": 4.06,
+    "outputs_byte_identical": true,
+    "digest_sample": {
+      "ar": "c51b39be6d8736a75dd4c5ce365c2d900744b379",
+      "bn_BD": "ce21a2ebe03bb69563ee623a7262c23897688252",
+      "ca_ES": "c79d574e031a1c2f74282d37b538b11902c7d46d"
+    }
+  }
+}
